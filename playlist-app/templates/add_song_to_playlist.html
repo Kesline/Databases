@@ -1,0 +1,29 @@
+<!-- add_song_to_playlist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Song to Playlist</title>
+</head>
+<body>
+    <h1>Add Song to Playlist</h1>
+    <h2>{{ playlist.name }}</h2>
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.song.label }}
+            {{ form.song }}
+            {% if form.song.errors %}
+                <ul>
+                    {% for error in form.song.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <button type="submit">Add Song to Playlist</button>
+    </form>
+    <a href="{{ url_for('show_all_playlists') }}">Back to Playlists</a>
+</body>
+</html>

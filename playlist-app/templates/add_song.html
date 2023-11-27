@@ -1,0 +1,28 @@
+<!-- add_song.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Song</title>
+</head>
+<body>
+    <h1>Add Song</h1>
+    <form method="POST" action="">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.title.label }}
+            {{ form.title }}
+            {% if form.title.errors %}
+                <ul>
+                    {% for error in form.title.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <button type="submit">Add Song</button>
+    </form>
+    <a href="{{ url_for('show_all_songs') }}">Back to Songs</a>
+</body>
+</html>
